@@ -2,6 +2,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
 LiquidCrystal_I2C lcd(0x3F ,20,4);
+
 #define pinSensor A0 // MQ-7
 #define MQ136  A1 // pin A1 adalah untuk sensor MQ-136
 #define MG_PIN  A3 // MG-811
