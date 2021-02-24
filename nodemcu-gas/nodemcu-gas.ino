@@ -4,11 +4,14 @@
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
 
-const char *ssid =  "OPPO A3s";
-const char *pass =  "pramuka22";
+const char *ssid =  "KEDAI DJENGGOT $$$";
+const char *pass =  "genosida";
 
-#define FIREBASE_HOST "db-iot-e8e04-default-rtdb.firebaseio.com/"                    
-#define FIREBASE_AUTH "PKoCmZfK1SpLsfdfEvSk4O3nKdrQNEx6ischXGhm"  
+//#define FIREBASE_HOST "db-iot-e8e04-default-rtdb.firebaseio.com/"                    
+//#define FIREBASE_AUTH "PKoCmZfK1SpLsfdfEvSk4O3nKdrQNEx6ischXGhm"  
+
+#define FIREBASE_HOST "db-sensor-default-rtdb.firebaseio.com/"                    
+#define FIREBASE_AUTH "Fj3RkLO2EifBBu00tKvU4A9bW0I41nd4LnHmGMSM"  
 
 // NTP Config 
 #define NTP_OFFSET   7 * 60 * 60   // In seconds
@@ -88,7 +91,7 @@ void loop() {
     store_firebase.set("ppm_so2",ppm_so2);
     
     // Do Store Data
-    if (Firebase.set(firebaseData,String(epochTime),store_firebase)) {
+    if (Firebase.set(firebaseData,"/sensors/"+String(epochTime),store_firebase)) {
        Serial.println("PATH: " + firebaseData.dataPath());
        Serial.println("PASSED");
     }else{

@@ -1,5 +1,5 @@
-#include <ArduinoJson.h>
 #include <LiquidCrystal_I2C.h>
+#include <ArduinoJson.h>
 #include <Wire.h>
 LiquidCrystal_I2C lcd(0x3F ,20,4);
 
@@ -46,7 +46,7 @@ void setup() {
   Serial.begin(9600);
   
   Wire.begin();
-  lcd.begin(20,4);
+  lcd.begin();
   lcd.backlight(); // LCD Ukuran 16X2
   
 }
@@ -95,11 +95,11 @@ void loop() {
   lcd.print(ppmb);
   lcd.println(" ppm");
 
-  if (ppmb < 13){
+  if (ppmb < 15){
     lcd.setCursor(0,1);
     lcd.print("Ket: ");
     lcd.println("Aman");
-  }else if (ppmb >= 13 && ppmb < 50) {
+  }else if (ppmb >= 15 && ppmb < 50) {
     lcd.setCursor(0,1);
     lcd.print("Ket: ");
     lcd.println("Peringatan");
